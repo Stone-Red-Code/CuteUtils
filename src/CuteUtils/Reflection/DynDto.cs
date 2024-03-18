@@ -2,6 +2,7 @@
 using System.Reflection;
 
 namespace CuteUtils.Reflection;
+
 public static class DynDto
 {
     public static ExpandoObject ToDto(this object data)
@@ -25,8 +26,10 @@ public static class DynDto
 
     public static T ToDto<T>(this object data, T dto)
     {
+        ArgumentNullException.ThrowIfNull(dto);
+
         PropertyInfo[] dataProperties = data.GetType().GetProperties();
-        PropertyInfo[] dtoProperties = data.GetType().GetProperties();
+        PropertyInfo[] dtoProperties = dto.GetType().GetProperties();
 
         foreach (PropertyInfo dataProperty in dataProperties)
         {
