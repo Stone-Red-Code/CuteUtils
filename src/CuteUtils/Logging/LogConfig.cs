@@ -1,8 +1,4 @@
-﻿using Stone_Red_C_Sharp_Utilities.Logging;
-
-using Stone_Red_Utilities.Logging;
-
-namespace CuteUtils.Logging;
+﻿namespace CuteUtils.Logging;
 
 /// <summary>
 /// Logging configuration.

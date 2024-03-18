@@ -1,6 +1,4 @@
-﻿using Stone_Red_C_Sharp_Utilities;
-
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace CuteUtils.Logging;

@@ -1,6 +1,4 @@
-﻿using Stone_Red_C_Sharp_Utilities.Logging;
-
-using System.Text;
+﻿using System.Text;
 
 namespace CuteUtils.Logging;
 

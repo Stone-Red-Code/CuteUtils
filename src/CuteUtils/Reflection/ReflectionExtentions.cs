@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 
-namespace CuteUtils;
+namespace CuteUtils.Reflection;
 
 /// <summary>
 /// Reflection class
 /// </summary>
-public static class Reflection
+public static class ReflectionExtentions
 {
     /// <summary>
     /// Copies all properties of an object to a new one.

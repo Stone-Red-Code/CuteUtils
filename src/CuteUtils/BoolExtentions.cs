@@ -8,26 +8,26 @@ public static class BoolExt
     /// <summary>
     /// Sets value to true if input is true. If input is false the value will not change.
     /// </summary>
-    /// <param name="bol"></param>
+    /// <param name="value"></param>
     /// <param name="input"></param>
-    public static void OneWayTrue(this ref bool bol, bool input)
+    public static void OneWayTrue(this ref bool value, bool input)
     {
-        if (!bol && input)
+        if (!value && input)
         {
-            bol = true;
+            value = true;
         }
     }
 
     /// <summary>
     /// Sets value to false if input is false. If input is true the value will not change.
     /// </summary>
-    /// <param name="bol"></param>
+    /// <param name="value"></param>
     /// <param name="input"></param>
-    public static void OneWayFalse(this ref bool bol, bool input)
+    public static void OneWayFalse(this ref bool value, bool input)
     {
-        if (bol && !input)
+        if (value && !input)
         {
-            bol = false;
+            value = false;
         }
     }
 
