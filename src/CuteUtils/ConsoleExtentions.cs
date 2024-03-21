@@ -11,10 +11,10 @@ namespace CuteUtils;
 public static class ConsoleExt
 {
     /// <summary>
-    /// Writes the text representation of the specified object to the standard output stream.
+    /// Writes the specified value to the console with the specified color.
     /// </summary>
-    /// <param name="value"></param>
-    /// <param name="color"></param>
+    /// <param name="value">The value to write.</param>
+    /// <param name="color">The color of the text.</param>
     public static void Write(object value, ConsoleColor color)
     {
         lock (Console.Out)
@@ -27,10 +27,10 @@ public static class ConsoleExt
     }
 
     /// <summary>
-    /// Writes the text representation of the specified object, followed by the current line terminator, to the standard output stream.
+    /// Writes the specified value to the console with the specified color and appends a new line.
     /// </summary>
-    /// <param name="value"></param>
-    /// <param name="color"></param>
+    /// <param name="value">The value to write.</param>
+    /// <param name="color">The color of the text.</param>
     public static void WriteLine(object value, ConsoleColor color)
     {
         lock (Console.Out)
@@ -45,9 +45,9 @@ public static class ConsoleExt
     /// <summary>
     /// Reads the next line of characters from the standard input stream and tries to convert it to the specified type.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type to convert the input string to.</typeparam>
     /// <returns>The input string converted to the specified type.</returns>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">Thrown if the conversion is not supported.</exception>
     public static T ReadLine<T>()
     {
         string attemptedValue = Console.ReadLine() ?? string.Empty;
@@ -60,9 +60,9 @@ public static class ConsoleExt
     /// <summary>
     /// Reads the next line of characters from the standard input stream and tries to convert it to the specified type.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type to convert the input string to.</typeparam>
     /// <param name="input">The input string converted to the specified type.</param>
-    /// <returns><see langword="true"/> if the conversion was successful. Otherwise <see langword="false"/></returns>
+    /// <returns><see langword="true"/> if the conversion was successful. Otherwise <see langword="false"/>.</returns>
     public static bool TryReadLine<T>([NotNullWhen(true)] out T? input)
     {
         string attemptedValue = Console.ReadLine() ?? string.Empty;
@@ -84,9 +84,9 @@ public static class ConsoleExt
     /// Obtains the next character or function key pressed by the user and converts it to the specified type.
     /// The pressed key is displayed in the console window.
     /// </summary>
-    /// <typeparam name="T">The type of the </typeparam>
+    /// <typeparam name="T">The type to convert the input character to.</typeparam>
     /// <returns>The input character converted to the specified type.</returns>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">Thrown if the conversion is not supported.</exception>
     public static T ReadKey<T>()
     {
         string attemptedValue = Console.ReadKey().KeyChar.ToString();
@@ -101,15 +101,14 @@ public static class ConsoleExt
     /// The pressed key is displayed in the console window.
     /// </summary>
     /// <param name="input">The input character converted to the specified type.</param>
-    /// <typeparam name="T">The type of the </typeparam>
-    /// <returns><see langword="true"/> if the conversion was successful. Otherwise <see langword="false"/></returns>
+    /// <typeparam name="T">The type to convert the input character to.</typeparam>
+    /// <returns><see langword="true"/> if the conversion was successful. Otherwise <see langword="false"/>.</returns>
     public static bool TryReadKey<T>([NotNullWhen(true)] out T? input)
     {
         string attemptedValue = Console.ReadKey().KeyChar.ToString();
         Type type = typeof(T);
         TypeConverter converter = TypeDescriptor.GetConverter(type);
         if (converter != null && converter.IsValid(attemptedValue))
-
         {
             input = (T)converter.ConvertFromString(attemptedValue)!;
             return true;
@@ -122,10 +121,10 @@ public static class ConsoleExt
     }
 
     /// <summary>
-    /// Suspends execution of the current method until the user presses a key
+    /// Suspends execution of the current method until the user presses a key.
     /// </summary>
-    /// <param name="key">The key that has to be pressed</param>
-    /// <param name="message">The message that will be displayed</param>
+    /// <param name="key">The key that has to be pressed.</param>
+    /// <param name="message">The message that will be displayed.</param>
     public static void Pause(ConsoleKey key, string? message = null)
     {
         Console.WriteLine(message ?? $"Press {key} to continue...");
@@ -137,9 +136,9 @@ public static class ConsoleExt
     }
 
     /// <summary>
-    /// Suspends execution of the current method until the user presses a key
+    /// Suspends execution of the current method until the user presses a key.
     /// </summary>
-    /// <param name="message">The message that will be displayed</param>
+    /// <param name="message">The message that will be displayed.</param>
     public static void Pause(string message = "Press any key to continue...")
     {
         Console.WriteLine(message);

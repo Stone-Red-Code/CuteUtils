@@ -9,172 +9,172 @@ namespace CuteUtils.Logging;
 public class Logger
 {
     /// <summary>
-    /// The logging configuration.
+    /// Gets or sets the log configuration.
     /// </summary>
     public LogConfig Config { get; init; } = new LogConfig();
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs a message with the specified source, log severity, and additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="source"></param>
-    /// <param name="logSeverity"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="source">The source of the log message.</param>
+    /// <param name="logSeverity">The severity level of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void Log(string message, string source, LogSeverity logSeverity, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, source, logSeverity, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs a message with the specified log severity and additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="logSeverity"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="logSeverity">The severity level of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void Log(string message, LogSeverity logSeverity, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, string.Empty, logSeverity, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs an informational message with the specified source and additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="source"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="source">The source of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogInfo(string message, string source, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, source, LogSeverity.Info, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs an informational message with additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogInfo(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, string.Empty, LogSeverity.Info, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs a warning message with the specified source and additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="source"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="source">The source of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogWarn(string message, string source, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, source, LogSeverity.Warn, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs a warning message with additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogWarn(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, string.Empty, LogSeverity.Warn, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs an error message with additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogError(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, string.Empty, LogSeverity.Error, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs an error message with the specified source and additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="source"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="source">The source of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogError(string message, string source, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, source, LogSeverity.Error, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs a fatal error message with additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogFatal(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, string.Empty, LogSeverity.Fatal, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs a fatal error message with the specified source and additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="source"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="source">The source of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogFatal(string message, string source, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, source, LogSeverity.Fatal, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs a debug message with additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogDebug(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, string.Empty, LogSeverity.Debug, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output
+    /// Logs a debug message with the specified source and additional caller information.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="source"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="source">The source of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogDebug(string message, string source, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         WriteLog(message, source, LogSeverity.Debug, memberName, sourceFilePath, sourceLineNumber);
     }
 
     /// <summary>
-    /// Log the message to the specified output if the condition is met
+    /// Logs a message with the specified source, log severity, and additional caller information if the condition is met.
     /// </summary>
-    /// <param name="condition"></param>
-    /// <param name="message"></param>
-    /// <param name="source"></param>
-    /// <param name="logSeverity"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="condition">The condition to check.</param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="source">The source of the log message.</param>
+    /// <param name="logSeverity">The severity level of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogIf(bool condition, string message, string source, LogSeverity logSeverity, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         if (condition)
@@ -184,14 +184,14 @@ public class Logger
     }
 
     /// <summary>
-    /// Log the message to the specified output if the condition is met
+    /// Logs a message with the specified log severity and additional caller information if the condition is met.
     /// </summary>
-    /// <param name="condition"></param>
-    /// <param name="message"></param>
-    /// <param name="logSeverity"></param>
-    /// <param name="memberName"></param>
-    /// <param name="sourceFilePath"></param>
-    /// <param name="sourceLineNumber"></param>
+    /// <param name="condition">The condition to check.</param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="logSeverity">The severity level of the log message.</param>
+    /// <param name="memberName">The name of the calling member.</param>
+    /// <param name="sourceFilePath">The path of the source file.</param>
+    /// <param name="sourceLineNumber">The line number in the source file.</param>
     public void LogIf(bool condition, string message, LogSeverity logSeverity, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
         if (condition)
@@ -201,8 +201,9 @@ public class Logger
     }
 
     /// <summary>
-    /// Clears the log file
+    /// Clears the log file for the specified log severity.
     /// </summary>
+    /// <param name="logSeverity">The severity level of the log messages to clear.</param>
     public void ClearLogFile(LogSeverity logSeverity)
     {
         OutputConfig outputConfig = GetOutputConfig(logSeverity);
@@ -257,7 +258,7 @@ public class Logger
                     File.Create(outputConfig.FilePath).Close();
                 }
 
-                File.AppendAllLines(outputConfig.FilePath, [fileOutput]);
+                File.AppendAllLines(outputConfig.FilePath, new[] { fileOutput });
             }
         }
     }

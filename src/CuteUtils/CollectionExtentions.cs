@@ -34,11 +34,12 @@ public enum TableStyle
 public static class CollectionExt
 {
     /// <summary>
-    /// Prints all items of an <see cref="IEnumerable{T}"/>
+    /// Prints the elements of the collection.
     /// </summary>
-    /// <param name="collection"></param>
-    /// <param name="delimiter"></param>
-    /// <param name="printToDebugConsole"></param>
+    /// <typeparam name="T">The type of the elements in the collection.</typeparam>
+    /// <param name="collection">The collection to print.</param>
+    /// <param name="delimiter">The delimiter character to use between elements. Default is ','.</param>
+    /// <param name="printToDebugConsole">Indicates whether to print to the debug console. Default is false.</param>
     public static void Print<T>(this IEnumerable<T> collection, char delimiter = ',', bool printToDebugConsole = false)
     {
         int i = 0;
@@ -63,11 +64,11 @@ public static class CollectionExt
     }
 
     /// <summary>
-    /// Creates and prints table from 2D array
+    /// Prints the elements of the 2D array in a table format.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="array"></param>
-    /// <param name="tableStyle"></param>
+    /// <typeparam name="T">The type of the elements in the array.</typeparam>
+    /// <param name="array">The 2D array to print.</param>
+    /// <param name="tableStyle">The style of the table. Default is TableStyle.Default.</param>
     public static void PrintTable<T>(this T[,] array, TableStyle tableStyle = TableStyle.Default)
     {
         int[] itemLength = new int[array.GetLength(1)];
