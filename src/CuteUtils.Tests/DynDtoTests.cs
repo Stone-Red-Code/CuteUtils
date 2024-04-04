@@ -8,58 +8,142 @@ namespace CuteUtils.Tests;
 public class DynDtoTests
 {
     [TestMethod]
-    public void Convert_ToDto_ReturnsExpandoObject()
+    public void ToDto_ShouldConvertObjectToDynamicDto()
     {
-        TestModel testModel = new()
+        // Arrange
+        TestData data = new TestData
         {
-            Id = 13,
-            Name = "test",
-            Value = (15, "test"),
+            Name = "John",
+            Age = 30
         };
 
-        ExpandoObject dto = testModel.ToDto();
+        // Act
+        dynamic dto = data.ToDto();
 
-        Assert.IsNotNull(dto);
-
-        Assert.IsFalse(dto.Any(p => p.Key == "Id"));
-        Assert.IsTrue(dto.Any(p => p.Key == "Name"));
-        Assert.IsTrue(dto.Any(p => p.Key == "Value"));
+        // Assert
+        Assert.AreEqual("John", dto.Name);
+        Assert.AreEqual(30, dto.Age);
     }
 
     [TestMethod]
-    public void Convert_ToDto_ReturnsGeneric()
+    public void ToDto_ShouldConvertObjectToSpecifiedDtoType()
     {
-        TestModel testModel = new()
+        // Arrange
+        TestData data = new TestData
         {
-            Id = 13,
-            Name = "test",
-            Value = (15, "test"),
+            Name = "John",
+            Age = 30
+        };
+        TestDataDto dto = new TestDataDto();
+
+        // Act
+        dto = data.ToDto(dto);
+
+        // Assert
+        Assert.AreEqual("John", dto.Name);
+        Assert.AreEqual(30, dto.Age);
+    }
+
+    [TestMethod]
+    public void ToDto_ShouldConvertObjectToNewInstanceDto()
+    {
+        // Arrange
+        TestData data = new TestData
+        {
+            Name = "John",
+            Age = 30
         };
 
-        TestDto dto = testModel.ToDto<TestDto>();
+        // Act
+        TestDataDto dto = data.ToDto<TestDataDto>();
 
-        Assert.IsNotNull(dto);
-
-        Assert.IsTrue(dto.Id == 0);
-        Assert.IsTrue(!string.IsNullOrWhiteSpace(dto.Name));
-        Assert.IsTrue(dto.Value is not (0, ""));
+        // Assert
+        Assert.AreEqual("John", dto.Name);
+        Assert.AreEqual(30, dto.Age);
     }
 
-    private class TestModel
+    [TestMethod]
+    public void FromDto_ShouldConvertDynamicDtoToObject()
     {
-        public required int Id { get; set; }
+        // Arrange
+        ExpandoObject dto = new ExpandoObject();
+        _ = dto.TryAdd("Name", "John");
+        _ = dto.TryAdd("Age", 30);
+        TestData data = new TestData();
 
-        [DynDtoName(nameof(Name))]
-        public required string Name { get; set; }
+        // Act
+        data = dto.FromDto(data);
 
-        [DynDtoName(nameof(Value))]
-        public required object Value { get; set; }
+        // Assert
+        Assert.AreEqual("John", data.Name);
+        Assert.AreEqual(30, data.Age);
     }
 
-    private class TestDto
+    [TestMethod]
+    public void FromDto_ShouldConvertDynamicDtoToNewInstanceObject()
     {
-        public int Id { get; init; } = 0;
+        // Arrange
+        ExpandoObject dto = new ExpandoObject();
+        _ = dto.TryAdd("Name", "John");
+        _ = dto.TryAdd("Age", 30);
+
+        // Act
+        TestData data = dto.FromDto<TestData>();
+
+        // Assert
+        Assert.AreEqual("John", data.Name);
+        Assert.AreEqual(30, data.Age);
+    }
+
+    [TestMethod]
+    public void FromDto_ShouldConvertDtoToObject()
+    {
+        // Arrange
+        TestDataDto dto = new TestDataDto
+        {
+            Name = "John",
+            Age = 30
+        };
+        TestData data = new TestData();
+
+        // Act
+        data = dto.FromDto(data);
+
+        // Assert
+        Assert.AreEqual("John", data.Name);
+        Assert.AreEqual(30, data.Age);
+    }
+
+    [TestMethod]
+    public void FromDto_ShouldConvertDtoToNewInstanceObject()
+    {
+        // Arrange
+        TestDataDto dto = new TestDataDto
+        {
+            Name = "John",
+            Age = 30
+        };
+
+        // Act
+        TestData data = dto.FromDto<TestData>();
+
+        // Assert
+        Assert.AreEqual("John", data.Name);
+        Assert.AreEqual(30, data.Age);
+    }
+
+    public class TestData
+    {
+        [DynDtoName("Name")]
         public string Name { get; set; } = string.Empty;
-        public object Value { get; init; } = (0, string.Empty);
+
+        [DynDtoName("Age")]
+        public int Age { get; set; }
+    }
+
+    public class TestDataDto
+    {
+        public string Name { get; set; } = string.Empty;
+        public int Age { get; set; }
     }
 }
