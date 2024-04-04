@@ -26,7 +26,7 @@ public class LogFormatBuilder
     }
 
     /// <summary>
-    /// Converts the <see cref="LogFormatBuilder" to <see cref="string"/>/>
+    /// Converts the <see cref="LogFormatBuilder"/> to <see cref="string"/>
     /// </summary>
     /// <param name="value">The <see cref="LogFormatBuilder"/> to convert.</param>
     public static implicit operator string(LogFormatBuilder value)
@@ -35,7 +35,7 @@ public class LogFormatBuilder
     }
 
     /// <summary>
-    /// Converts the <see cref="string" to <see cref="LogFormatBuilder"/>/>
+    /// Converts the <see cref="string"/> to <see cref="LogFormatBuilder"/>
     /// </summary>
     /// <param name="value">The <see cref="stringBuilder"/> to convert.</param>
     public static implicit operator LogFormatBuilder(string value)

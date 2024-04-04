@@ -92,6 +92,7 @@ public class TaskQueue : IDisposable
         GC.SuppressFinalize(this);
     }
 
+    /// <inheritdoc cref="IDisposable.Dispose"/>
     protected virtual void Dispose(bool disposing)
     {
         if (!disposed)
