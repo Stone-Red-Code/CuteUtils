@@ -18,6 +18,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <None Include="..\..\LICENSE">
+          <Pack>True</Pack>
+          <PackagePath>\</PackagePath>
+        </None>
         <None Include="..\..\README.md">
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
@@ -27,9 +31,32 @@
     <ItemGroup>
         <PackageReference Include="System.Reactive.Linq" Version="6.0.0" />
         <PackageReference Include="Vsxmd" Version="1.4.5">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
+
+    <!--
+      FIXES:
+      An assembly specified in the application dependencies manifest (Vsxmd.deps.json) was not found:
+      package: 'runtimepack.Microsoft.NETCore.App.Runtime.win-x64', version: '3.1.1'
+      path: 'Microsoft.Win32.Primitives.dll'
+    -->
+    <PropertyGroup>
+        <UserTempFolder>$([System.IO.Path]::GetTempPath())</UserTempFolder>
+        <Version>1.0.0.0</Version>
+        <Description>A "cute" utility library for C#</Description>
+        <RepositoryUrl>https://github.com/Stone-Red-Code/CuteUtils</RepositoryUrl>
+        <PackageTags>Utility, Helper</PackageTags>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <FilesToDelete Include="$(UserTempFolder).net\Vsxmd\**\*" />
+    </ItemGroup>
+    <Target Name="CustomCleanVsxmd" AfterTargets="Clean" Condition="$([MSBuild]::IsOsPlatform('Windows'))">
+        <Message Importance="high" Text="Cleaning up Vsxmd temporary files in $(UserTempFolder).net\Vsxmd" />
+        <Delete Files="@(FilesToDelete)" ContinueOnError="true" />
+        <RemoveDir Directories="$(UserTempFolder).net\Vsxmd\" ContinueOnError="true" />
+    </Target>
 
 </Project>
