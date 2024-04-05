@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using CuteUtils.Misc;
+
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace CuteUtils.Logging;
@@ -258,7 +260,7 @@ public class Logger
                     File.Create(outputConfig.FilePath).Close();
                 }
 
-                File.AppendAllLines(outputConfig.FilePath, new[] { fileOutput });
+                File.AppendAllLines(outputConfig.FilePath, [fileOutput]);
             }
         }
     }

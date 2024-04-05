@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 #pragma warning disable S3998 // Threads should not lock on objects with weak identity
 
-namespace CuteUtils;
+namespace CuteUtils.Misc;
 
 /// <summary>
 /// <see cref="Console"/> Extensions

@@ -1,4 +1,4 @@
-﻿namespace CuteUtils;
+﻿namespace CuteUtils.Misc;
 
 /// <summary>
 /// <see cref="Random"/> Extensions

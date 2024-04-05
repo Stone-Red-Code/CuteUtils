@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace CuteUtils;
+namespace CuteUtils.Misc;
 
 /// <summary>
 /// Table Style
