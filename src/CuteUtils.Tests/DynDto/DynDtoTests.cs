@@ -2,7 +2,7 @@ using CuteUtils.Reflection;
 
 using System.Dynamic;
 
-namespace CuteUtils.Tests;
+namespace CuteUtils.Tests.DynDto;
 
 [TestClass]
 public class DynDtoTests

@@ -1,6 +1,6 @@
 ﻿using CuteUtils.Misc;
 
-namespace CuteUtils.Tests;
+namespace CuteUtils.Tests.Misc;
 
 [TestClass]
 public class BoolExtentionsTests
