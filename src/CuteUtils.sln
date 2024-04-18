@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuteUtils", "CuteUtils\CuteUtils.csproj", "{D640F3B6-2B09-496D-88D6-3CF57559845D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuteUtils", "CuteUtils\CuteUtils.csproj", "{D640F3B6-2B09-496D-88D6-3CF57559845D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuteUtils.Tests", "CuteUtils.Tests\CuteUtils.Tests.csproj", "{1468822C-92E4-4C44-93F6-DE71930F7C96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D640F3B6-2B09-496D-88D6-3CF57559845D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D640F3B6-2B09-496D-88D6-3CF57559845D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D640F3B6-2B09-496D-88D6-3CF57559845D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1468822C-92E4-4C44-93F6-DE71930F7C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1468822C-92E4-4C44-93F6-DE71930F7C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1468822C-92E4-4C44-93F6-DE71930F7C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1468822C-92E4-4C44-93F6-DE71930F7C96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
