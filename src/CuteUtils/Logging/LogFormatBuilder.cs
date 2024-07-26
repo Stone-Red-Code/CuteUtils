@@ -19,7 +19,7 @@ public class LogFormatBuilder
     /// <summary>
     /// Creates a new <see cref="LogFormatBuilder"/> instance.
     /// </summary>
-    /// <param name="value">The inital format.</param>
+    /// <param name="value">The initial format.</param>
     public LogFormatBuilder(string value)
     {
         _ = stringBuilder.Append(value);
@@ -55,7 +55,7 @@ public class LogFormatBuilder
     }
 
     /// <summary>
-    /// Appends the log datie time to the log format.
+    /// Appends the log date time to the log format.
     /// </summary>
     /// <param name="format">The format to apply.</param>
     /// <param name="padding">The padding to apply.</param>

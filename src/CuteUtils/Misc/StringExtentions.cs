@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Text;
 
-namespace CuteUtils;
+namespace CuteUtils.Misc;
 
 /// <summary>
 /// <see cref="string"/> Extensions

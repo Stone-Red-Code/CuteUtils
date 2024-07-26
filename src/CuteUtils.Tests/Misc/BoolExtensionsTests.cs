@@ -3,7 +3,7 @@
 namespace CuteUtils.Tests.Misc;
 
 [TestClass]
-public class BoolExtentionsTests
+public class BoolExtensionsTests
 {
     [TestMethod]
     public void OneWayTrue_ShouldSetValueToTrue_WhenInputIsTrue()

@@ -56,7 +56,7 @@ public static class DecimalFluent
     }
 
     /// <summary>
-    /// Adds the two nums
+    /// Adds the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
@@ -67,7 +67,7 @@ public static class DecimalFluent
     }
 
     /// <summary>
-    /// Subtracts the two nums
+    /// Subtracts the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
@@ -78,7 +78,7 @@ public static class DecimalFluent
     }
 
     /// <summary>
-    /// Multiples the two nums
+    /// Multiples the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
@@ -89,7 +89,7 @@ public static class DecimalFluent
     }
 
     /// <summary>
-    /// Divides the two nums
+    /// Divides the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
@@ -136,15 +136,15 @@ public static class DecimalFluent
     }
 
     /// <inheritdoc cref="Math.Round(decimal,int)"/>
-    public static decimal Round(this decimal num, int digits)
+    public static decimal Round(this decimal num, int decimals)
     {
-        return Math.Round(num, digits);
+        return Math.Round(num, decimals);
     }
 
     /// <inheritdoc cref="Math.Round(decimal,int,MidpointRounding)"/>
-    public static decimal Round(this decimal num, int digits, MidpointRounding mode)
+    public static decimal Round(this decimal num, int decimals, MidpointRounding mode)
     {
-        return Math.Round(num, digits, mode);
+        return Math.Round(num, decimals, mode);
     }
 
     /// <inheritdoc cref="Math.Sign(decimal)"/>

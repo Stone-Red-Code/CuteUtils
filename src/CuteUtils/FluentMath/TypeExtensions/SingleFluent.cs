@@ -56,7 +56,7 @@ public static class SingleFluent
     }
 
     /// <summary>
-    /// Adds the two nums
+    /// Adds the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
@@ -67,7 +67,7 @@ public static class SingleFluent
     }
 
     /// <summary>
-    /// Subtracts the two nums
+    /// Subtracts the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
@@ -78,7 +78,7 @@ public static class SingleFluent
     }
 
     /// <summary>
-    /// Multiples the two nums
+    /// Multiples the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
@@ -89,7 +89,7 @@ public static class SingleFluent
     }
 
     /// <summary>
-    /// Divides the two nums
+    /// Divides the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>

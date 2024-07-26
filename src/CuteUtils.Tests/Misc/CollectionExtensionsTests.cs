@@ -5,7 +5,7 @@ using System.Text;
 namespace CuteUtils.Tests.Misc;
 
 [TestClass]
-public class CollectionExtentionsTests
+public class CollectionExtensionsTests
 {
     private StringBuilder consoleOutput = null!;
 
