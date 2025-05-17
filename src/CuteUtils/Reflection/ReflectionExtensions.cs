@@ -5,7 +5,7 @@ namespace CuteUtils.Reflection;
 /// <summary>
 /// Provides extension methods for reflection operations.
 /// </summary>
-public static class ReflectionExtentions
+public static class ReflectionExtensions
 {
     /// <summary>
     /// Creates a new instance of the specified type and copies the properties from the source object to the new instance.

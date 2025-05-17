@@ -1,16 +1,16 @@
-﻿namespace CuteUtils.FluentMath.TypeExtentions;
+﻿namespace CuteUtils.FluentMath.TypeExtensions;
 
 /// <summary>
 /// IntegerFluent class
 /// </summary>
-public static class Int16Fluent
+public static class Int64Fluent
 {
     /// <summary>
     /// Converts number to <see cref="decimal"/>
     /// </summary>
     /// <param name="num"></param>
     /// <returns>Number as <see cref="decimal"/></returns>
-    public static decimal ToDecimal(this short num)
+    public static decimal ToDecimal(this long num)
     {
         return num;
     }
@@ -20,7 +20,7 @@ public static class Int16Fluent
     /// </summary>
     /// <param name="num"></param>
     /// <returns>Number as <see cref="float"/></returns>
-    public static float ToSingle(this short num)
+    public static float ToSingle(this long num)
     {
         return num;
     }
@@ -30,9 +30,19 @@ public static class Int16Fluent
     /// </summary>
     /// <param name="num"></param>
     /// <returns>Number as <see cref="double"/></returns>
-    public static double ToDouble(this short num)
+    public static double ToDouble(this long num)
     {
         return num;
+    }
+
+    /// <summary>
+    /// Converts number to <see cref="short"/>
+    /// </summary>
+    /// <param name="num"></param>
+    /// <returns>Number as <see cref="short"/></returns>
+    public static short ToInt16(this long num)
+    {
+        return (short)num;
     }
 
     /// <summary>
@@ -40,79 +50,69 @@ public static class Int16Fluent
     /// </summary>
     /// <param name="num"></param>
     /// <returns>Number as <see cref="int"/></returns>
-    public static int ToInt32(this short num)
+    public static int ToInt32(this long num)
     {
-        return num;
+        return (int)num;
     }
 
     /// <summary>
-    /// Converts number to <see cref="long"/>
-    /// </summary>
-    /// <param name="num"></param>
-    /// <returns>Number as <see cref="long"/></returns>
-    public static long ToInt64(this short num)
-    {
-        return num;
-    }
-
-    /// <summary>
-    /// Adds the two nums
+    /// Adds the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static int Add(this short num, short value)
+    public static long Add(this long num, long value)
     {
         return num + value;
     }
 
     /// <summary>
-    /// Subtracts the two nums
+    /// Subtracts the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static int Subtract(this short num, short value)
+    public static long Subtract(this long num, long value)
     {
         return num - value;
     }
 
     /// <summary>
-    /// Multiples the two nums
+    /// Multiples the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static int Multiply(this short num, short value)
+    public static long Multiply(this long num, long value)
     {
         return num * value;
     }
 
     /// <summary>
-    /// Divides the two nums
+    /// Divides the two numbers
     /// </summary>
     /// <param name="num"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static int Divide(this short num, short value)
+    public static long Divide(this long num, long value)
     {
         return num / value;
     }
 
-    /// <inheritdoc cref="Math.Abs(short)"/>
-    public static short Abs(this short num)
+    /// <inheritdoc cref="Math.Abs(long)"/>
+    public static long Abs(this long num)
     {
         return Math.Abs(num);
     }
 
-    /// <inheritdoc cref="Math.Clamp(short,short,short)"/>
-    public static short Clamp(this short num, short min, short max)
+    /// <inheritdoc cref="Math.Clamp(long,long,long)"/>
+    public static long Clamp(this long num, long min, long max)
     {
         return Math.Clamp(num, min, max);
     }
 
-    /// <inheritdoc cref="Math.Sign(short)"/>
-    public static int Sign(this short num)
+    /// <inheritdoc cref="Math.Sign(long)"/>
+    public static long Sign(this long num)
     {
         return Math.Sign(num);
     }

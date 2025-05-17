@@ -190,9 +190,9 @@ public static class DoubleFluent
     }
 
     /// <inheritdoc cref="Math.IEEERemainder(double,double)"/>
-    public static double IEEERemainder(this double num, double valuee)
+    public static double IEEERemainder(this double num, double value)
     {
-        return Math.IEEERemainder(num, valuee);
+        return Math.IEEERemainder(num, value);
     }
 
     /// <inheritdoc cref="Math.Log(double)"/>
