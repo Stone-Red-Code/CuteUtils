@@ -9,9 +9,9 @@ public class WaitTests
     public async Task UntilAsync_ConditionMet_CompletesSuccessfully()
     {
         bool flag = false;
-        _ = Task.Run(() =>
+        _ = Task.Run(async () =>
         {
-            Thread.Sleep(200);
+            await Task.Delay(200);
             flag = true;
         });
         await Wait.UntilAsync(() => flag, TimeSpan.FromMilliseconds(50), TimeSpan.FromSeconds(2));
@@ -19,19 +19,21 @@ public class WaitTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(TimeoutException))]
     public async Task UntilAsync_ConditionNotMet_ThrowsTimeoutException()
     {
-        await Wait.UntilAsync(() => false, TimeSpan.FromMilliseconds(50), TimeSpan.FromMilliseconds(200));
+        _ = await Assert.ThrowsExactlyAsync<TimeoutException>(async () =>
+        {
+            await Wait.UntilAsync(() => false, TimeSpan.FromMilliseconds(50), TimeSpan.FromMilliseconds(200));
+        });
     }
 
     [TestMethod]
     public void Until_ConditionMet_CompletesSuccessfully()
     {
         bool flag = false;
-        _ = Task.Run(() =>
+        _ = Task.Run(async () =>
         {
-            Thread.Sleep(200);
+            await Task.Delay(200);
             flag = true;
         });
         Wait.Until(() => flag, TimeSpan.FromMilliseconds(50), TimeSpan.FromSeconds(2));
@@ -39,10 +41,12 @@ public class WaitTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(TimeoutException))]
     public void Until_ConditionNotMet_ThrowsTimeoutException()
     {
-        Wait.Until(() => false, TimeSpan.FromMilliseconds(50), TimeSpan.FromMilliseconds(200));
+        _ = Assert.ThrowsExactly<TimeoutException>(() =>
+        {
+            Wait.Until(() => false, TimeSpan.FromMilliseconds(50), TimeSpan.FromMilliseconds(200));
+        });
     }
 
     [TestMethod]
@@ -50,9 +54,9 @@ public class WaitTests
     {
         void subscribe(Action handler)
         {
-            _ = Task.Run(() =>
+            _ = Task.Run(async () =>
             {
-                Thread.Sleep(200);
+                await Task.Delay(200);
                 handler();
             });
         }
@@ -60,11 +64,16 @@ public class WaitTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(TimeoutException))]
     public async Task WaitForEventAsync_EventNotRaised_ThrowsTimeoutException()
     {
-        void subscribe(Action handler) { }
-        await Wait.WaitForEventAsync(subscribe, TimeSpan.FromMilliseconds(200));
+        void subscribe(Action handler)
+        {
+            // Intentionally left empty for negative test case (event never raised)
+        }
+        _ = await Assert.ThrowsExactlyAsync<TimeoutException>(async () =>
+        {
+            await Wait.WaitForEventAsync(subscribe, TimeSpan.FromMilliseconds(200));
+        });
     }
 
     [TestMethod]
@@ -72,9 +81,9 @@ public class WaitTests
     {
         void subscribe(Action<int> handler)
         {
-            _ = Task.Run(() =>
+            _ = Task.Run(async () =>
             {
-                Thread.Sleep(200);
+                await Task.Delay(200);
                 handler(42);
             });
         }
@@ -83,11 +92,16 @@ public class WaitTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(TimeoutException))]
     public async Task WaitForEventAsyncT_EventNotRaised_ThrowsTimeoutException()
     {
-        void subscribe(Action<int> handler) { }
-        _ = await Wait.WaitForEventAsync((Action<Action<int>>)subscribe, TimeSpan.FromMilliseconds(200));
+        void subscribe(Action<int> handler)
+        {
+            // Intentionally left empty for negative test case (event never raised)
+        }
+        _ = await Assert.ThrowsExactlyAsync<TimeoutException>(async () =>
+        {
+            _ = await Wait.WaitForEventAsync((Action<Action<int>>)subscribe, TimeSpan.FromMilliseconds(200));
+        });
     }
 
     [TestMethod]
@@ -95,9 +109,9 @@ public class WaitTests
     {
         void subscribe(Action handler)
         {
-            _ = Task.Run(() =>
+            _ = Task.Run(async () =>
             {
-                Thread.Sleep(200);
+                await Task.Delay(200);
                 handler();
             });
         }
@@ -105,11 +119,16 @@ public class WaitTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(TimeoutException))]
     public void WaitForEvent_EventNotRaised_ThrowsTimeoutException()
     {
-        void subscribe(Action handler) { }
-        Wait.WaitForEvent(subscribe, TimeSpan.FromMilliseconds(200));
+        void subscribe(Action handler)
+        {
+            // Intentionally left empty for negative test case (event never raised)
+        }
+        _ = Assert.ThrowsExactly<TimeoutException>(() =>
+        {
+            Wait.WaitForEvent(subscribe, TimeSpan.FromMilliseconds(200));
+        });
     }
 
     [TestMethod]
@@ -117,9 +136,9 @@ public class WaitTests
     {
         void subscribe(Action<string> handler)
         {
-            _ = Task.Run(() =>
+            _ = Task.Run(async () =>
             {
-                Thread.Sleep(200);
+                await Task.Delay(200);
                 handler("hello");
             });
         }
@@ -128,10 +147,15 @@ public class WaitTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(TimeoutException))]
     public void WaitForEventT_EventNotRaised_ThrowsTimeoutException()
     {
-        void subscribe(Action<string> handler) { }
-        _ = Wait.WaitForEvent((Action<Action<string>>)subscribe, TimeSpan.FromMilliseconds(200));
+        void subscribe(Action<string> handler)
+        {
+            // Intentionally left empty for negative test case (event never raised)
+        }
+        _ = Assert.ThrowsExactly<TimeoutException>(() =>
+        {
+            _ = Wait.WaitForEvent((Action<Action<string>>)subscribe, TimeSpan.FromMilliseconds(200));
+        });
     }
 }

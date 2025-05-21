@@ -40,7 +40,7 @@
     -->
     <PropertyGroup>
         <UserTempFolder>$([System.IO.Path]::GetTempPath())</UserTempFolder>
-        <Version>1.1.0.0</Version>
+        <Version>1.1.1.0</Version>
         <Description>A "cute" utility library for C#</Description>
         <RepositoryUrl>https://github.com/Stone-Red-Code/CuteUtils</RepositoryUrl>
         <PackageTags>Utility, Helper</PackageTags>
