@@ -124,7 +124,7 @@ public static class Try
             catch (Exception ex)
             {
                 lastException = ex;
-                System.Threading.Thread.Sleep(delay.Value);
+                Thread.Sleep(delay.Value);
             }
         }
         throw new InvalidOperationException($"Failed after {maxRetries} attempts.", lastException);

@@ -1,4 +1,4 @@
-﻿namespace CuteUtils.FluentMath.TypeExtentions;
+﻿namespace CuteUtils.FluentMath.TypeExtensions;
 
 /// <summary>
 /// FloatFluent class
