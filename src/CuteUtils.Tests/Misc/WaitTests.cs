@@ -36,7 +36,7 @@ public class WaitTests
             await Task.Delay(200);
             flag = true;
         });
-        Wait.Until(() => flag, TimeSpan.FromMilliseconds(50), TimeSpan.FromSeconds(2));
+        Wait.Until(() => flag, TimeSpan.FromMilliseconds(50));
         Assert.IsTrue(flag);
     }
 
@@ -87,7 +87,7 @@ public class WaitTests
                 handler(42);
             });
         }
-        int result = await Wait.WaitForEventAsync((Action<Action<int>>)subscribe, TimeSpan.FromSeconds(2));
+        int result = await Wait.ForEventAsync((Action<Action<int>>)subscribe, TimeSpan.FromSeconds(2));
         Assert.AreEqual(42, result);
     }
 
@@ -100,7 +100,7 @@ public class WaitTests
         }
         _ = await Assert.ThrowsExactlyAsync<TimeoutException>(async () =>
         {
-            _ = await Wait.WaitForEventAsync((Action<Action<int>>)subscribe, TimeSpan.FromMilliseconds(200));
+            _ = await Wait.ForEventAsync((Action<Action<int>>)subscribe, TimeSpan.FromMilliseconds(200));
         });
     }
 
@@ -115,7 +115,7 @@ public class WaitTests
                 handler();
             });
         }
-        Wait.WaitForEvent(subscribe, TimeSpan.FromSeconds(2));
+        Wait.ForEvent(subscribe, TimeSpan.FromSeconds(2));
     }
 
     [TestMethod]
@@ -127,7 +127,7 @@ public class WaitTests
         }
         _ = Assert.ThrowsExactly<TimeoutException>(() =>
         {
-            Wait.WaitForEvent(subscribe, TimeSpan.FromMilliseconds(200));
+            Wait.ForEvent(subscribe, TimeSpan.FromMilliseconds(200));
         });
     }
 
@@ -142,7 +142,7 @@ public class WaitTests
                 handler("hello");
             });
         }
-        string result = Wait.WaitForEvent((Action<Action<string>>)subscribe, TimeSpan.FromSeconds(2));
+        string result = Wait.ForEvent((Action<Action<string>>)subscribe, TimeSpan.FromSeconds(2));
         Assert.AreEqual("hello", result);
     }
 
@@ -155,7 +155,7 @@ public class WaitTests
         }
         _ = Assert.ThrowsExactly<TimeoutException>(() =>
         {
-            _ = Wait.WaitForEvent((Action<Action<string>>)subscribe, TimeSpan.FromMilliseconds(200));
+            _ = Wait.ForEvent((Action<Action<string>>)subscribe, TimeSpan.FromMilliseconds(200));
         });
     }
 }
